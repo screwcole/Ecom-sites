@@ -1,6 +1,15 @@
-# Shopify CLI
-.shopify/
-*.log
+# Ecom-sites — repo-root ignore rules (apply to every site folder)
+
+# Secrets — never commit, in any site subfolder
+**/.env
+**/.env.*
+!**/.env.example
+**/config.yml
+
+# Local tooling / generated output — not part of any theme
+**/preview/_tools/
+**/preview/generated/
+**/.shopify/
 
 # OS / editor
 .DS_Store
@@ -8,16 +17,5 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
-
-# Node (if using build tooling later)
 node_modules/
 npm-debug.log*
-
-# Env / secrets — never commit store credentials
-.env
-.env.*
-!.env.example
-config.yml
-
-# Local image-upscaling tool (Real-ESRGAN) � not part of the theme
-preview/_tools/

@@ -1,0 +1,23 @@
+# Shopify CLI
+.shopify/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Node (if using build tooling later)
+node_modules/
+npm-debug.log*
+
+# Env / secrets — never commit store credentials
+.env
+.env.*
+!.env.example
+config.yml
+
+# Local image-upscaling tool (Real-ESRGAN) � not part of the theme
+preview/_tools/
