@@ -1,0 +1,53 @@
+{%- comment -%} Science / proof stats row {%- endcomment -%}
+<section class="section{% if section.settings.invert %} invert{% endif %}" style="background:{{ section.settings.bg_color }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head text-center reveal">
+        {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+    <div class="grid grid--{{ section.blocks.size | at_most: 4 }}">
+      {%- for block in section.blocks -%}
+        <div class="stat reveal" {{ block.shopify_attributes }}>
+          <div class="stat__num">{{ block.settings.number }}</div>
+          <div class="stat__label">{{ block.settings.label }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats row",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Backed by the science of NAD+" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#EFEADF" },
+    { "type": "checkbox", "id": "invert", "label": "Light text (for dark backgrounds)", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "8 hrs" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Steady release per patch" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Stats row",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "8 hrs", "label": "Steady NAD+ release per patch" } },
+        { "type": "stat", "settings": { "number": "50%", "label": "Of NAD+ is lost by midlife" } },
+        { "type": "stat", "settings": { "number": "30 ct", "label": "A full month in every pack" } },
+        { "type": "stat", "settings": { "number": "4.9★", "label": "Average customer rating" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

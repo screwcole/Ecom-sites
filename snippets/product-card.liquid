@@ -1,0 +1,32 @@
+{%- comment -%}
+  Product card. Usage: {% render 'product-card', product: product %}
+{%- endcomment -%}
+<a href="{{ product.url }}" class="product-card reveal">
+  <div class="product-card__media">
+    {%- if product.compare_at_price > product.price -%}
+      <span class="product-card__badge badge">Save {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%</span>
+    {%- elsif product.tags contains 'bestseller' -%}
+      <span class="product-card__badge badge badge--soft">Bestseller</span>
+    {%- endif -%}
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 600 }}"
+           alt="{{ product.featured_image.alt | escape | default: product.title }}"
+           width="600" height="600" loading="lazy">
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card__media' }}
+    {%- endif -%}
+  </div>
+  {%- if product.metafields.reviews.rating.value != blank -%}
+    <div class="product-card__rating">★ {{ product.metafields.reviews.rating.value }} ({{ product.metafields.reviews.rating_count }})</div>
+  {%- endif -%}
+  <div class="product-card__title">{{ product.title }}</div>
+  <div class="product-card__price">
+    {%- if product.compare_at_price > product.price -%}
+      <s>{{ product.compare_at_price | money }}</s>
+    {%- endif -%}
+    {{ product.price | money }}
+  </div>
+  {%- if product.selling_plan_groups.size > 0 -%}
+    <div class="product-card__sub">Subscribe &amp; save</div>
+  {%- endif -%}
+</a>

@@ -1,0 +1,8 @@
+{%- comment -%} Renders configured social links from theme settings. {%- endcomment -%}
+<div class="footer__social">
+  {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+  {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+  {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook" target="_blank" rel="noopener">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
+  {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" aria-label="YouTube" target="_blank" rel="noopener">{% render 'icon', name: 'youtube' %}</a>{%- endif -%}
+  {%- if settings.social_x != blank -%}<a href="{{ settings.social_x }}" aria-label="X" target="_blank" rel="noopener">{% render 'icon', name: 'x' %}</a>{%- endif -%}
+</div>

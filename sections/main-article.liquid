@@ -1,0 +1,27 @@
+{%- comment -%} Blog article {%- endcomment -%}
+<article class="section">
+  <div class="page-width" style="max-width:740px">
+    <div class="text-center reveal" style="margin-bottom:32px">
+      {%- if article.tags.size > 0 -%}<span class="badge badge--soft" style="margin-bottom:14px">{{ article.tags.first }}</span>{%- endif -%}
+      <h1>{{ article.title }}</h1>
+      <p class="text-soft">{{ article.published_at | date: '%B %-d, %Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</p>
+    </div>
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title }}" width="{{ article.image.width }}" height="{{ article.image.height }}" class="rounded reveal" style="margin-bottom:40px;width:100%;height:auto">
+    {%- endif -%}
+    <div class="rte flow reveal">{{ article.content }}</div>
+
+    {%- if blog.comments_enabled? -%}
+      <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--color-border)">
+        <h3>{{ article.comments_count }} comments</h3>
+        {%- for comment in article.comments -%}
+          <div class="card" style="margin-bottom:14px"><strong>{{ comment.author }}</strong><p>{{ comment.content }}</p></div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

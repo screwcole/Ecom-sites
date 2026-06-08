@@ -1,0 +1,12 @@
+<section class="section"><div class="page-width" style="max-width:760px">
+  <h1>Your addresses</h1>
+  <p><a href="{{ routes.account_url }}" class="link-arrow">← Back to account</a></p>
+  {%- paginate customer.addresses by 5 -%}
+    {%- for address in customer.addresses -%}
+      <div class="card" style="margin-top:16px">
+        {{ address | format_address }}
+      </div>
+    {%- endfor -%}
+  {%- endpaginate -%}
+  <p class="text-soft" style="margin-top:20px">Add or edit addresses from your account dashboard.</p>
+</div></section>

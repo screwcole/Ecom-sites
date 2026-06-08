@@ -1,0 +1,59 @@
+{%- comment -%} Sticky site header with nav, logo, search/account/cart {%- endcomment -%}
+<header class="header">
+  <div class="page-width header__inner">
+    <button class="header__menu-toggle" data-nav-open aria-label="Open menu">{% render 'icon', name: 'menu' %}</button>
+
+    <a href="{{ routes.root_url }}" class="header__logo">
+      {%- if settings.logo != blank -%}
+        <img src="{{ settings.logo | image_url: width: 480 }}" alt="{{ shop.name }}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" style="width:{{ settings.logo_width }}px;height:auto">
+      {%- else -%}
+        {{ shop.name }}
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" aria-label="Primary">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__actions">
+      {%- if section.settings.cta_link != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="header__cta">{{ section.settings.cta_text | default: 'Shop' }}</a>
+      {%- endif -%}
+      <a href="{{ routes.search_url }}" class="header__icon" aria-label="Search">{% render 'icon', name: 'search' %}</a>
+      <a href="{{ routes.account_url }}" class="header__icon" aria-label="Account">{% render 'icon', name: 'user' %}</a>
+      <button class="header__icon" data-cart-open aria-label="Cart">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{%- comment -%} Mobile slide-in nav {%- endcomment -%}
+<div class="mobile-nav" id="MobileNav" aria-hidden="true">
+  <div class="mobile-nav__overlay" data-nav-close></div>
+  <div class="mobile-nav__panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+      <span class="header__logo">{{ shop.name }}</span>
+      <button class="header__icon" data-nav-close aria-label="Close menu">{% render 'icon', name: 'close' %}</button>
+    </div>
+    {%- for link in section.settings.menu.links -%}
+      <a href="{{ link.url }}" data-nav-close>{{ link.title }}</a>
+    {%- endfor -%}
+    <a href="{{ routes.account_url }}" data-nav-close>Account</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "header", "content": "Header button" },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Shop" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ]
+}
+{% endschema %}

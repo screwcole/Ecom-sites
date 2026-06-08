@@ -1,0 +1,38 @@
+{%- comment -%} Blog listing — the "Journal" for SEO + education {%- endcomment -%}
+<section class="section">
+  <div class="page-width">
+    <div class="collection-header reveal">
+      <h1>{{ blog.title }}</h1>
+      <p class="lede" style="margin-inline:auto">Longevity science, NAD+ research, and healthy-aging guides.</p>
+    </div>
+    {%- paginate blog.articles by 9 -%}
+      <div class="grid grid--3">
+        {%- for article in blog.articles -%}
+          <a href="{{ article.url }}" class="card reveal" style="padding:0;overflow:hidden">
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}" width="600" height="375" style="aspect-ratio:16/10;object-fit:cover;width:100%" loading="lazy">
+            {%- endif -%}
+            <div style="padding:22px">
+              {%- if article.tags.size > 0 -%}<span class="badge badge--soft" style="margin-bottom:10px">{{ article.tags.first }}</span>{%- endif -%}
+              <h3 style="font-size:1.25rem">{{ article.title }}</h3>
+              <p class="text-soft">{{ article.excerpt_or_content | strip_html | truncatewords: 22 }}</p>
+              <span class="link-arrow" style="margin-top:8px">Read more →</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <nav class="pill-row" style="justify-content:center;margin-top:48px">
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a class="btn btn--outline" href="{{ part.url }}">{{ part.title }}</a>
+            {%- else -%}<span class="btn btn--primary">{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

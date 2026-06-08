@@ -1,0 +1,55 @@
+{%- comment -%} FAQ accordion {%- endcomment -%}
+<section class="section" style="background:{{ section.settings.bg_color }}">
+  <div class="page-width" style="max-width:820px">
+    <div class="section-head text-center reveal">
+      {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="reveal">
+      {%- for block in section.blocks -%}
+        <details class="faq__item" {{ block.shopify_attributes }}>
+          <summary class="faq__q">
+            {{ block.settings.question }}
+            <span class="faq__icon">{% render 'icon', name: 'plus', size: 22 %}</span>
+          </summary>
+          <div class="faq__a">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything you want to know" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F6F3EC" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What exactly is NAD+?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>NAD+ (nicotinamide adenine dinucleotide) is a coenzyme found in every cell. It's essential for turning food into energy and for cellular repair. Levels naturally decline with age.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "What exactly is NAD+?", "answer": "<p>NAD+ (nicotinamide adenine dinucleotide) is a coenzyme in every cell, essential for energy production and cellular repair. Levels decline as we age.</p>" } },
+        { "type": "qa", "settings": { "question": "How do I use the patches?", "answer": "<p>Apply one patch to clean, dry skin each morning — inner forearm, shoulder, or hip work well. Wear for up to 8 hours, then remove.</p>" } },
+        { "type": "qa", "settings": { "question": "When will I feel results?", "answer": "<p>Many customers notice steadier energy within the first week. Cellular benefits build with consistent daily use — we recommend a 90-day routine.</p>" } },
+        { "type": "qa", "settings": { "question": "Is it safe?", "answer": "<p>MethodN is made in a GMP-certified facility and third-party lab tested. As with any supplement, consult your doctor if pregnant, nursing, or on medication.</p>" } },
+        { "type": "qa", "settings": { "question": "How does the subscription work?", "answer": "<p>Choose your cadence at checkout and save 20%. Skip, swap, or cancel anytime from your account — no fees, no lock-in.</p>" } },
+        { "type": "qa", "settings": { "question": "What's your return policy?", "answer": "<p>Every order is backed by a 60-day money-back guarantee. If you're not feeling it, we'll refund you.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

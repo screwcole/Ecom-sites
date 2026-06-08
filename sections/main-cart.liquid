@@ -1,0 +1,51 @@
+{%- comment -%} Full cart page (fallback when cart type = page, or /cart visited directly) {%- endcomment -%}
+<section class="section">
+  <div class="page-width" style="max-width:960px">
+    <h1 style="margin-bottom:32px">Your cart</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="CartForm">
+        {%- for item in cart.items -%}
+          <div class="cart-line" style="grid-template-columns:88px 1fr auto auto;align-items:center">
+            <a href="{{ item.url }}">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 176 }}" alt="{{ item.product.title }}" width="88" height="88" style="width:88px;height:88px">
+              {%- endif -%}
+            </a>
+            <div>
+              <a href="{{ item.url }}" class="cart-line__title">{{ item.product.title }}</a>
+              {%- unless item.variant.title contains 'Default' -%}<div class="cart-line__meta">{{ item.variant.title }}</div>{%- endunless -%}
+              {%- if item.selling_plan_allocation -%}<div class="cart-line__meta">{{ item.selling_plan_allocation.selling_plan.name }}</div>{%- endif -%}
+            </div>
+            <div class="qty">
+              <a href="{{ item.url_to_remove }}" data-cart-remove="{{ item.key }}" style="display:none"></a>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity" style="width:60px">
+            </div>
+            <div class="cart-line__title">{{ item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;flex-wrap:wrap;gap:16px">
+          <button type="submit" name="update" class="btn btn--outline">Update cart</button>
+          <div style="text-align:right">
+            <div class="cart-totals" style="justify-content:flex-end;gap:24px"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+            <p class="text-soft" style="font-size:0.85rem">Shipping &amp; taxes calculated at checkout</p>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;display:flex;justify-content:flex-end">
+          <button type="submit" name="checkout" class="btn btn--primary btn--lg">Secure checkout</button>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty">
+        <p>Your cart is currently empty.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary btn--lg">Shop NAD+ patches</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

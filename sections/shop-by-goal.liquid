@@ -1,0 +1,61 @@
+{%- comment -%} Shop by goal — solution-led navigation (Energy/Focus/Recovery/Sleep) {%- endcomment -%}
+<section class="section" style="background:{{ section.settings.bg_color }}">
+  <div class="page-width">
+    <div class="section-head text-center reveal">
+      {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link }}" class="goal-card reveal" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          {%- endif -%}
+          <div>
+            <h3>{{ block.settings.title }}</h3>
+            <span>{{ block.settings.subtitle }}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop by goal",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by goal" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What do you want to feel today?" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 4 },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F6F3EC" }
+  ],
+  "blocks": [
+    {
+      "type": "goal",
+      "name": "Goal",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Energy" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "NAD+ + B12" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Shop by goal",
+      "blocks": [
+        { "type": "goal", "settings": { "title": "Energy", "subtitle": "NAD+ + B12" } },
+        { "type": "goal", "settings": { "title": "Focus", "subtitle": "NAD+ + L-Theanine" } },
+        { "type": "goal", "settings": { "title": "Recovery", "subtitle": "NAD+ + CoQ10" } },
+        { "type": "goal", "settings": { "title": "Sleep", "subtitle": "NAD+ + Magnesium" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,230 @@
+{%- comment -%} Product page — gallery, subscribe/one-time, variants, AJAX add-to-cart {%- endcomment -%}
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="product" data-variant-picker>
+      {%- comment -%} ---------- Gallery ---------- {%- endcomment -%}
+      <div class="product__gallery" data-gallery>
+        <div class="product__main-image">
+          {%- if product.featured_image -%}
+            <img data-gallery-main src="{{ product.featured_image | image_url: width: 1000 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}" width="1000" height="1000">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="product__thumbs">
+            {%- for image in product.images limit: 6 -%}
+              <button type="button" class="product__thumb {% if forloop.first %}is-active{% endif %}" data-gallery-thumb data-full="{{ image | image_url: width: 1000 }}">
+                <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" width="72" height="72" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ---------- Buy box ---------- {%- endcomment -%}
+      <div class="product__info" data-atc-anchor>
+        {%- if product.metafields.reviews.rating.value != blank -%}
+          <div class="product__rating">
+            <span class="stars">{% for i in (1..5) %}{% render 'icon', name: 'star', size: 16 %}{% endfor %}</span>
+            <span class="text-soft">{{ product.metafields.reviews.rating.value }} · {{ product.metafields.reviews.rating_count }} reviews</span>
+          </div>
+        {%- endif -%}
+
+        <h1 class="product__title">{{ product.title }}</h1>
+        {%- if product.metafields.custom.subtitle != blank -%}
+          <p class="lede">{{ product.metafields.custom.subtitle }}</p>
+        {%- endif -%}
+
+        <div class="product__price">
+          <span data-variant-compare {% unless current.compare_at_price > current.price %}hidden{% endunless %}><s>{{ current.compare_at_price | money }}</s></span>
+          <span data-variant-price>{{ current.price | money }}</span>
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product__desc">{{ product.description }}</div>
+        {%- endif -%}
+
+        {% form 'product', product, data-product-form: '', novalidate: 'novalidate' %}
+          <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+
+          {%- comment -%} Variant options (skip if single default variant) ---------- {%- endcomment -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="variant-group">
+                <label class="variant-group__label">{{ option.name }}</label>
+                <div class="variant-options">
+                  {%- for value in option.values -%}
+                    <label class="variant-option">
+                      <input type="radio" name="option{{ option.position }}" value="{{ value | escape }}" data-option-input {% if option.selected_value == value %}checked{% endif %}>
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          {%- comment -%} Purchase options: one-time vs subscribe & save ---------- {%- endcomment -%}
+          {%- assign sp_group = product.selling_plan_groups | first -%}
+          {%- if sp_group -%}
+            {%- comment -%} Subscription-first: subscribe options on top, first pre-selected ---------- {%- endcomment -%}
+            <div class="purchase-options" data-purchase-options>
+              {%- for plan in sp_group.selling_plans -%}
+                {%- assign alloc = current.selling_plan_allocations | where: 'selling_plan_id', plan.id | first -%}
+                <label class="purchase-option{% if forloop.first %} purchase-option--sub{% endif %}"{% if forloop.first %} data-ribbon="Most popular"{% endif %}>
+                  <input type="radio" name="selling_plan" value="{{ plan.id }}" data-selling-plan {% if forloop.first and section.settings.subscribe_default %}checked{% endif %}>
+                  <div class="purchase-option__body">
+                    <div class="purchase-option__title">
+                      <span>{{ plan.name }}{% if alloc.compare_at_price > alloc.price %} <span class="save-badge">Save {{ alloc.compare_at_price | minus: alloc.price | times: 100.0 | divided_by: alloc.compare_at_price | round }}%</span>{% endif %}</span>
+                      {%- if alloc -%}
+                        {%- assign sub_pct = current.price | minus: alloc.price | times: 100 | divided_by: current.price -%}
+                        <span data-sub-price="{{ sub_pct }}">{{ alloc.price | money }}</span>
+                      {%- else -%}
+                        <span>{{ current.price | money }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="purchase-option__note">Best value · free shipping · cancel anytime</div>
+                  </div>
+                </label>
+              {%- endfor -%}
+              <div class="sub-extra" data-sub-extra{% unless section.settings.subscribe_default %} hidden{% endunless %}>
+                <ul class="sub-perks">
+                  <li>{% render 'icon', name: 'check' %} Save on every order, automatically</li>
+                  <li>{% render 'icon', name: 'check' %} Free shipping on every delivery</li>
+                  <li>{% render 'icon', name: 'check' %} Skip, swap, pause, or cancel anytime — no fees</li>
+                </ul>
+              </div>
+              <label class="purchase-option">
+                <input type="radio" name="selling_plan" value="" data-selling-plan {% unless section.settings.subscribe_default %}checked{% endunless %}>
+                <div class="purchase-option__body">
+                  <div class="purchase-option__title"><span>One-time purchase</span><span data-sub-price="0">{{ current.price | money }}</span></div>
+                  <div class="purchase-option__note">Ships once. No commitment.</div>
+                </div>
+              </label>
+            </div>
+          {%- else -%}
+            {%- comment -%} No native subscriptions installed — subscribe-first teaser ---------- {%- endcomment -%}
+            {%- if section.settings.show_subscribe_teaser -%}
+              <div class="purchase-options">
+                <label class="purchase-option purchase-option--sub" data-ribbon="Best value" style="opacity:.9">
+                  <input type="radio" name="_purchase" value="sub" disabled>
+                  <div class="purchase-option__body">
+                    <div class="purchase-option__title"><span>Subscribe &amp; save 20%</span></div>
+                    <div class="purchase-option__note">Install a subscriptions app (e.g. Shopify Subscriptions) to enable.</div>
+                  </div>
+                </label>
+                <label class="purchase-option">
+                  <input type="radio" name="_purchase" value="onetime" checked>
+                  <div class="purchase-option__body">
+                    <div class="purchase-option__title"><span>One-time purchase</span><span>{{ current.price | money }}</span></div>
+                    <div class="purchase-option__note">Ships once.</div>
+                  </div>
+                </label>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- comment -%} Quantity + Add to cart ---------- {%- endcomment -%}
+          <div class="product__atc">
+            <div class="qty">
+              <button type="button" data-qty-minus aria-label="Decrease">&minus;</button>
+              <input type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-label="Quantity">
+              <button type="button" data-qty-plus aria-label="Increase">+</button>
+            </div>
+            {%- assign atc_once = section.settings.atc_text | default: 'Add to cart' -%}
+            <button type="submit" class="btn btn--primary btn--lg" style="flex:1"
+                    data-atc-text
+                    data-atc-text-default="{{ atc_once | escape }}"
+                    data-atc-label-sub="Subscribe &amp; Save"
+                    data-atc-label-once="{{ atc_once | escape }}">
+              {% if sp_group and section.settings.subscribe_default %}Subscribe &amp; Save{% else %}{{ atc_once }}{% endif %}
+            </button>
+          </div>
+          {%- if sp_group -%}
+            <p class="atc-microcopy" data-atc-micro{% unless section.settings.subscribe_default %} hidden{% endunless %}>{% render 'icon', name: 'refresh' %} Free shipping &amp; 20% off · skip or cancel anytime</p>
+          {%- endif -%}
+
+          {%- comment -%} Variant data for JS {%- endcomment -%}
+          <script type="application/json" data-variant-json>
+            {
+              "variants": [
+                {%- for v in product.variants -%}
+                  {"id": {{ v.id }}, "price": {{ v.price }}, "compare_at_price": {{ v.compare_at_price | default: 0 }}, "available": {{ v.available }}, "options": {{ v.options | json }}}{%- unless forloop.last -%},{%- endunless -%}
+                {%- endfor -%}
+              ]
+            }
+          </script>
+        {% endform %}
+
+        {%- comment -%} Trust signals ---------- {%- endcomment -%}
+        <ul class="product__trust">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'trust' -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon %} {{ block.settings.text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    {%- comment -%} ---------- Long-form blocks (ingredients, how to use, etc) ---------- {%- endcomment -%}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'collapsible' -%}
+          <div class="page-width" style="max-width:820px;margin-top:48px" {{ block.shopify_attributes }}>
+            <details class="faq__item">
+              <summary class="faq__q">{{ block.settings.heading }}<span class="faq__icon">{% render 'icon', name: 'plus', size: 22 %}</span></summary>
+              <div class="faq__a">{{ block.settings.content }}</div>
+            </details>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{%- comment -%} ---------- Sticky mobile add-to-cart ---------- {%- endcomment -%}
+<div class="sticky-atc" data-sticky-atc>
+  <div class="sticky-atc__info">
+    <div class="sticky-atc__title">{{ product.title }}</div>
+    <div class="sticky-atc__price">{{ current.price | money }}</div>
+  </div>
+  <button class="btn btn--primary" onclick="document.querySelector('[data-product-form] [type=submit]').click()">Add to cart</button>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "text", "id": "atc_text", "label": "Add to cart text", "default": "Add to cart" },
+    { "type": "checkbox", "id": "subscribe_default", "label": "Default to Subscribe & Save (auto-subscribe on)", "default": true },
+    { "type": "checkbox", "id": "show_subscribe_teaser", "label": "Show subscribe teaser when no subscription app is installed", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust line",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "truck", "label": "Truck" },
+          { "value": "refresh", "label": "Refresh" },
+          { "value": "shield", "label": "Shield" },
+          { "value": "leaf", "label": "Leaf" },
+          { "value": "flask", "label": "Flask" },
+          { "value": "check", "label": "Check" }
+        ], "default": "truck" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Free carbon-neutral shipping over $75" }
+      ]
+    },
+    {
+      "type": "collapsible",
+      "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Ingredients" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Each patch delivers a pharmaceutical-grade NAD+ blend with supporting cofactors. Full supplement facts on pack.</p>" }
+      ]
+    }
+  ]
+}
+{% endschema %}

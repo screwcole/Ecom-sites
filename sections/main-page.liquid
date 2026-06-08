@@ -1,0 +1,13 @@
+{%- comment -%} Generic page (About, Policies, etc.) {%- endcomment -%}
+<section class="section">
+  <div class="page-width" style="max-width:760px">
+    <div class="text-center reveal" style="margin-bottom:40px">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <article class="rte flow reveal">{{ page.content }}</article>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Page", "settings": [] }
+{% endschema %}

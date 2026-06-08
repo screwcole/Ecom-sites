@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Method/N NAD+ Patches — Design Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/base.css">
+  <style>
+    :root{
+      --color-bg:#F6F3EC; --color-surface:#FFFFFF; --color-text:#18181B; --color-text-soft:#56564f;
+      --color-primary:#1B3A2F; --color-primary-text:#F6F3EC; --color-accent:#D6FF6B; --color-accent-text:#18181B;
+      --color-border:rgba(24,24,27,0.12); --radius:12px; --radius-lg:24px; --page-width:1280px;
+      --font-heading:'Fraunces',Georgia,serif; --font-body:'Inter',-apple-system,sans-serif;
+    }
+    .preview-banner{background:#18181B;color:#fff;font-size:.8rem;text-align:center;padding:7px 12px}
+    .preview-banner b{color:var(--color-accent)}
+    .breadcrumb{font-size:.85rem;color:var(--color-text-soft);padding-top:18px}
+    .breadcrumb a:hover{color:var(--color-primary)}
+    .logo-slash{color:#1aa34b}
+  </style>
+</head>
+<body class="template-product">
+
+<div class="preview-banner">DESIGN PREVIEW — buy box is fully interactive; <b>checkout is Shopify-backed and inactive here.</b></div>
+<div class="announcement">Subscribe &amp; save 20% · Free shipping over $75 · 60-day money-back guarantee</div>
+
+<header class="header">
+  <div class="page-width header__inner">
+    <button class="header__menu-toggle" data-nav-open aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a href="/preview/index.html" class="header__logo">Method<span class="logo-slash">/N</span></a>
+    <nav class="header__nav" aria-label="Primary">
+      <a href="/preview/shop.html">Shop</a><a href="/preview/index.html#how">How it works</a><a href="/preview/index.html#science">The Science</a><a href="/preview/index.html#faq">FAQ</a>
+    </nav>
+    <div class="header__actions">
+      <a href="#Product" class="header__cta">Shop</a>
+      <a href="/preview/shop.html" class="header__icon" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a>
+      <a href="#" class="header__icon" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <button class="header__icon" data-cart-open aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-2 5h12"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="page-width breadcrumb"><a href="/preview/index.html">Home</a> / <a href="/preview/shop.html">Shop</a> / NAD+ Patches</div>
+
+<section class="section section--tight"><div class="page-width">
+  <div class="product" id="Product">
+    <!-- Gallery (real product photography) -->
+    <div class="product__gallery" data-gallery>
+      <div class="product__main-image">
+        <img id="MainImg" src="/assets/methodnproductimage.jpeg" alt="Method/N NAD+ Patches box" width="832" height="832">
+      </div>
+      <div class="product__thumbs">
+        <button class="product__thumb is-active" data-full="/assets/methodnproductimage.jpeg"><img src="/assets/methodnproductimage.jpeg" alt="NAD+ Patches front" width="72" height="72"></button>
+        <button class="product__thumb" data-full="/assets/methodn1box.jpeg"><img src="/assets/methodn1box.jpeg" alt="1-month supply" width="72" height="72"></button>
+        <button class="product__thumb" data-full="/assets/methodn2box.jpeg"><img src="/assets/methodn2box.jpeg" alt="2-month supply" width="72" height="72"></button>
+        <button class="product__thumb" data-full="/assets/methodn3box.jpeg"><img src="/assets/methodn3box.jpeg" alt="3-month supply" width="72" height="72"></button>
+        <button class="product__thumb" data-full="/assets/methodnugcproductimage.jpeg"><img src="/assets/methodnugcproductimage.jpeg" alt="Customer holding NAD+ Patches" width="72" height="72"></button>
+      </div>
+    </div>
+
+    <!-- Buy box -->
+    <div class="product__info" data-atc-anchor>
+      <div class="product__rating">
+        <span class="stars"><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg></span>
+        <span class="text-soft">4.9 · 1,200+ reviews</span>
+      </div>
+      <h1 class="product__title">NAD+ Patches</h1>
+      <p class="lede">Age defense &amp; cellular renewal — a daily transdermal patch powered by <strong>NMN &amp; Resveratrol</strong> to support your body's NAD+ production.</p>
+
+      <div class="product__price">
+        <span id="CompareAt"></span>
+        <span id="Price">$39.20</span>
+        <span class="text-soft" id="PerMonth" style="font-size:1rem;font-weight:400"></span>
+      </div>
+
+      <div class="product__desc">Plant-based, third-party tested, made in a GMP facility. Each box is a 1-month supply (30 patches). Wear one patch daily for steady, all-day support — no pills, no needles.</div>
+      <p style="font-size:.85rem;color:#1aa34b;font-weight:600;margin:-6px 0 2px"><span style="display:inline-block;width:8px;height:8px;background:#1aa34b;border-radius:50%;margin-right:7px;vertical-align:1px"></span>In stock · ships free in 1–2 business days</p>
+
+      <!-- Supply tier (volume discount) -->
+      <div class="variant-group">
+        <label class="variant-group__label">Choose your supply — the longer you go, the lower the price per month</label>
+        <div class="purchase-options" id="PackOptions">
+          <label class="purchase-option">
+            <input type="radio" name="pack" value="1" data-price="4900" data-compare="4900" data-permonth="$49.00/mo" checked>
+            <div class="purchase-option__body"><div class="purchase-option__title"><span>1-month supply</span><span>$49.00</span></div><div class="purchase-option__note">$49.00/mo · 30 patches</div></div>
+          </label>
+          <label class="purchase-option">
+            <input type="radio" name="pack" value="2" data-price="9400" data-compare="9800" data-permonth="$47.00/mo">
+            <div class="purchase-option__body"><div class="purchase-option__title"><span>2-month supply <span class="save-badge">Save 4%</span></span><span>$94.00</span></div><div class="purchase-option__note">$47.00/mo · 60 patches</div></div>
+          </label>
+          <label class="purchase-option purchase-option--sub" data-ribbon="Most popular">
+            <input type="radio" name="pack" value="3" data-price="13500" data-compare="14700" data-permonth="$45.00/mo">
+            <div class="purchase-option__body"><div class="purchase-option__title"><span>3-month supply <span class="save-badge">Save 8%</span></span><span>$135.00</span></div><div class="purchase-option__note">$45.00/mo · 90 patches</div></div>
+          </label>
+          <label class="purchase-option">
+            <input type="radio" name="pack" value="6" data-price="23400" data-compare="29400" data-permonth="$39.00/mo">
+            <div class="purchase-option__body"><div class="purchase-option__title"><span>6-month supply <span class="save-badge">Best value · Save 20%</span></span><span>$234.00</span></div><div class="purchase-option__note">$39.00/mo · 180 patches</div></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Purchase options (subscription-first) -->
+      <div class="purchase-options" id="PurchaseOptions">
+        <label class="purchase-option purchase-option--sub" data-ribbon="Save 20% more">
+          <input type="radio" name="mode" value="subscribe" checked>
+          <div class="purchase-option__body">
+            <div class="purchase-option__title"><span>Subscribe &amp; Save <span class="save-badge">Save 20%</span></span><span id="SubPrice">$39.20</span></div>
+            <div class="purchase-option__note">Best value · free shipping · cancel anytime</div>
+          </div>
+        </label>
+        <div class="sub-extra" id="SubExtra">
+          <div class="freq-field"><label for="Freq">Deliver every</label>
+            <select id="Freq"><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option></select>
+          </div>
+          <ul class="sub-perks">
+            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> <strong>🎁 50% off your first month</strong> — new customers</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> An extra 20% off your supply, for life</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> Free shipping on every delivery</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> Skip, swap, pause, or cancel anytime — no fees</li>
+          </ul>
+        </div>
+        <label class="purchase-option">
+          <input type="radio" name="mode" value="onetime">
+          <div class="purchase-option__body">
+            <div class="purchase-option__title"><span>One-time purchase</span><span id="OncePrice">$49.00</span></div>
+            <div class="purchase-option__note">Ships once. No commitment.</div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Quantity + ATC -->
+      <div class="product__atc">
+        <div class="qty">
+          <button type="button" data-qty-minus aria-label="Decrease">−</button>
+          <input type="number" id="Qty" value="1" min="1" inputmode="numeric" aria-label="Quantity">
+          <button type="button" data-qty-plus aria-label="Increase">+</button>
+        </div>
+        <button type="button" class="btn btn--primary btn--lg" style="flex:1" id="AddBtn"><span id="AtcLabel">Subscribe &amp; Save</span> — <span id="AtcPrice">$39.20</span></button>
+      </div>
+      <p class="atc-microcopy" id="AtcMicro"><svg viewBox="0 0 24 24"><use href="#i-refresh"/></svg> Free shipping &amp; 20% off · skip or cancel anytime</p>
+
+      <ul class="product__trust">
+        <li><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg> Free carbon-neutral shipping over $75</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-refresh"/></svg> 60-day money-back guarantee</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-flask"/></svg> NMN &amp; Resveratrol · plant-based · third-party tested</li>
+      </ul>
+
+      <div style="margin-top:28px">
+        <details class="faq__item"><summary class="faq__q">How to use<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Apply one patch to clean, dry skin each morning — inner forearm, shoulder, or hip. Wear up to 8 hours, then remove. Use daily for best results.</div></details>
+        <details class="faq__item"><summary class="faq__q">Ingredients &amp; supplement facts<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">NMN (nicotinamide mononucleotide) and Resveratrol delivered transdermally to support NAD+ production. Plant-based, non-GMO, gluten-free. Full supplement facts printed on each pack.</div></details>
+        <details class="faq__item"><summary class="faq__q">Shipping &amp; returns<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Ships within 1–2 business days. Free shipping over $75. Not feeling it? Return within 60 days for a full refund.</div></details>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- UGC / science band -->
+<section class="section" id="science" style="background:#EFEADF"><div class="page-width">
+  <div class="split reveal">
+    <div class="split__media"><img src="/assets/methodnugcproductimage.jpeg" alt="Customer holding Method/N NAD+ Patches" width="697" height="697" style="border-radius:var(--radius-lg)"></div>
+    <div class="split__content">
+      <span class="eyebrow">Age defense &amp; cellular renewal</span>
+      <h2>NAD+ declines with age. We help you replenish it.</h2>
+      <div class="flow text-soft"><p>NAD+ is the coenzyme your cells use to make energy and repair themselves — and levels fall by roughly half by midlife. Method/N's transdermal patch delivers <strong>NMN &amp; Resveratrol</strong> steadily through the skin, bypassing the gut for more consistent absorption than a pill.</p></div>
+      <ul class="product__trust" style="margin-top:24px;border:0;padding:0">
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> Supports your body's natural NAD+ production</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> NMN + Resveratrol, the most-studied longevity pairing</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> Plant-based · no pills, powders, or needles</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- Guarantee -->
+<section class="section"><div class="page-width"><div class="guarantee reveal">
+  <div class="benefit__icon" style="margin-inline:auto;background:rgba(255,255,255,0.12);color:var(--color-accent)"><svg viewBox="0 0 24 24" width="28"><use href="#i-shield"/></svg></div>
+  <h2>Try it risk-free for 60 days</h2>
+  <p class="lede" style="margin-inline:auto;max-width:52ch">Wear Method/N every day for two months. If you don't feel the difference, send it back for a full refund — even empty packs.</p>
+  <div style="margin-top:28px"><a href="#Product" class="btn btn--accent btn--lg">Choose your supply</a></div>
+</div></div></section>
+</main>
+
+<footer class="footer"><div class="page-width">
+  <div class="footer__top">
+    <div class="footer__brand"><a href="/preview/index.html" class="header__logo" style="display:inline-block;margin-bottom:14px">Method<span class="logo-slash">/N</span></a><p>Age defense &amp; cellular renewal. NAD+ patches powered by NMN &amp; Resveratrol.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="/preview/shop.html">NAD+ Patches</a></li><li><a href="/preview/product.html">Subscribe &amp; save</a></li></ul></div>
+    <div><h4>Support</h4><ul><li><a href="/preview/about.html">About</a></li><li><a href="/preview/faq.html">FAQ</a></li><li><a href="/preview/faq.html#shipping">Shipping &amp; Returns</a></li><li><a href="mailto:hello@methodn.com">Contact</a></li></ul></div>
+    <div><h4>Stay in the loop</h4><p class="text-soft" style="margin-bottom:14px">Longevity science, product drops, and subscriber-only offers.</p><div class="newsletter__form"><input type="email" placeholder="Email address" aria-label="Email"><button class="btn btn--primary">Join</button></div></div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Method/N. These statements have not been evaluated by the FDA.</span><div class="pill-row"><a href="/preview/policies.html#privacy">Privacy</a><a href="/preview/policies.html#terms">Terms</a><a href="/preview/policies.html#refunds">Refunds</a></div></div>
+</div></footer>
+
+<!-- Sticky mobile ATC -->
+<div class="sticky-atc" data-sticky-atc>
+  <div class="sticky-atc__info"><div class="sticky-atc__title">NAD+ Patches</div><div class="sticky-atc__price" id="StickyPrice">$39.20</div></div>
+  <button class="btn btn--primary" onclick="document.getElementById('AddBtn').click()">Add to cart</button>
+</div>
+
+<script src="/preview/preview-shop.js"></script>
+<script>
+  (function () {
+    var money = function (c) { return '$' + (c / 100).toFixed(2); };
+    var packLabels = { '1': '1-month supply', '2': '2-month supply', '3': '3-month supply', '6': '6-month supply' };
+    function selPack() { return document.querySelector('input[name=pack]:checked'); }
+    function isSub() { return document.querySelector('input[name=mode]:checked').value === 'subscribe'; }
+    function update() {
+      var p = selPack();
+      var base = parseInt(p.dataset.price, 10);
+      var compare = parseInt(p.dataset.compare, 10);
+      var sub = Math.round(base * 0.8);
+      var current = isSub() ? sub : base;
+      var qty = Math.max(1, parseInt(document.getElementById('Qty').value, 10) || 1);
+      document.getElementById('Price').textContent = money(current * qty);
+      document.getElementById('PerMonth').textContent = '(' + p.dataset.permonth + ')';
+      // Compare-at: subscribe strikes the one-time pack price; one-time strikes the volume compare-at
+      var strike = isSub() ? base : (compare > base ? compare : 0);
+      document.getElementById('CompareAt').innerHTML = strike ? '<s>' + money(strike * qty) + '</s>' : '';
+      document.getElementById('SubPrice').textContent = money(sub);
+      document.getElementById('OncePrice').textContent = money(base);
+      document.getElementById('AtcPrice').textContent = money(current * qty);
+      document.getElementById('StickyPrice').textContent = money(current * qty);
+      document.getElementById('SubExtra').hidden = !isSub();
+      document.getElementById('AtcLabel').textContent = isSub() ? 'Subscribe & Save' : 'Add to cart';
+      document.getElementById('AtcMicro').hidden = !isSub();
+    }
+    document.getElementById('Product').addEventListener('change', function (e) {
+      if (e.target.name === 'pack' || e.target.name === 'mode') update();
+    });
+    document.getElementById('Qty').addEventListener('input', update);
+    document.querySelectorAll('.product__thumb').forEach(function (t) {
+      t.addEventListener('click', function () {
+        document.querySelectorAll('.product__thumb').forEach(function (x) { x.classList.remove('is-active'); });
+        t.classList.add('is-active');
+        document.getElementById('MainImg').src = t.dataset.full;
+      });
+    });
+    document.getElementById('AddBtn').addEventListener('click', function () {
+      var p = selPack();
+      var base = parseInt(p.dataset.price, 10);
+      var sub = isSub();
+      var current = sub ? Math.round(base * 0.8) : base;
+      var qty = Math.max(1, parseInt(document.getElementById('Qty').value, 10) || 1);
+      var months = p.value;
+      var freq = document.getElementById('Freq').value;
+      var meta = sub ? (packLabels[months] + ' · Subscribe & Save · every ' + freq + ' mo')
+                     : (packLabels[months] + ' · One-time');
+      window.MN.add({
+        id: 'nadpatch-' + months + '-' + (sub ? 'sub' + freq : 'once'),
+        title: 'Method/N NAD+ Patches',
+        meta: meta, price: current, qty: qty, sub: sub, base: base,
+        img: document.getElementById('MainImg').src
+      });
+    });
+    update();
+  })();
+</script>
+</body>
+</html>

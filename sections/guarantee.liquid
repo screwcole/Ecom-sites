@@ -1,0 +1,28 @@
+{%- comment -%} Guarantee / risk-reversal banner + final CTA {%- endcomment -%}
+<section class="section">
+  <div class="page-width">
+    <div class="guarantee reveal">
+      <div class="benefit__icon" style="margin-inline:auto;background:rgba(255,255,255,0.12);color:var(--color-accent)">{% render 'icon', name: 'shield', size: 28 %}</div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="lede" style="margin-inline:auto;max-width:52ch">{{ section.settings.text }}</p>
+      {%- if section.settings.cta_text != blank -%}
+        <div style="margin-top:28px">
+          <a href="{{ section.settings.cta_link }}" class="btn btn--accent btn--lg">{{ section.settings.cta_text }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Guarantee banner",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Try it risk-free for 60 days" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Wear MethodN every day for two months. If you don't feel the difference, send it back for a full refund — even empty packs." },
+    { "type": "text", "id": "cta_text", "label": "Button", "default": "Start your routine" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Guarantee banner" }]
+}
+{% endschema %}

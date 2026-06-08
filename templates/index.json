@@ -1,0 +1,130 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "icon": "shield", "text": "Third-party tested" } },
+        "b2": { "type": "badge", "settings": { "icon": "leaf", "text": "Plant-based & non-GMO" } },
+        "b3": { "type": "badge", "settings": { "icon": "flask", "text": "NMN & Resveratrol" } }
+      },
+      "block_order": ["b1", "b2", "b3"],
+      "settings": {
+        "eyebrow": "Transdermal NAD+ technology",
+        "heading": "Age defense, in a daily patch.",
+        "subheading": "Method/N delivers NMN & Resveratrol through your skin to support your body's NAD+ production — cellular renewal without pills or needles.",
+        "rating_text": "4.9 · 12,000+ patches worn",
+        "cta_text": "Shop NAD+ Patches — from $39/mo",
+        "cta2_text": "How it works"
+      }
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "icon": "flask", "text": "NMN & Resveratrol" } },
+        "t2": { "type": "item", "settings": { "icon": "shield", "text": "Third-party lab tested" } },
+        "t3": { "type": "item", "settings": { "icon": "leaf", "text": "Plant-based · Non-GMO" } },
+        "t4": { "type": "item", "settings": { "icon": "truck", "text": "Free shipping over $75" } },
+        "t5": { "type": "item", "settings": { "icon": "refresh", "text": "60-day money-back" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5"],
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "x1": { "type": "benefit", "settings": { "icon": "bolt", "title": "Cellular energy", "text": "Fuel your mitochondria with the NAD+ your cells need to produce energy." } },
+        "x2": { "type": "benefit", "settings": { "icon": "leaf", "title": "Age defense", "text": "NMN supports NAD+ production tied to healthy aging and cellular repair." } },
+        "x3": { "type": "benefit", "settings": { "icon": "shield", "title": "Antioxidant support", "text": "Resveratrol helps defend your cells against everyday oxidative stress." } },
+        "x4": { "type": "benefit", "settings": { "icon": "heart", "title": "Whole-body renewal", "text": "Steady transdermal delivery supports vitality from the inside out." } }
+      },
+      "block_order": ["x1", "x2", "x3", "x4"],
+      "settings": { "eyebrow": "Why Method/N", "heading": "One patch. Cellular renewal.", "subheading": "NAD+ is the coenzyme your cells use to make energy and repair themselves. Levels fall as you age — Method/N helps top them back up." }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "eyebrow": "One product. Choose your supply.", "heading": "NAD+ Patches", "subheading": "Age defense & cellular renewal with NMN & Resveratrol. The longer your supply, the lower your price per month.", "limit": 4, "columns": 4, "cta_text": "Shop NAD+ Patches" }
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Peel", "text": "Remove one patch from the pack each morning." } },
+        "s2": { "type": "step", "settings": { "title": "Stick", "text": "Apply to clean, dry skin — inner forearm, shoulder, or hip." } },
+        "s3": { "type": "step", "settings": { "title": "Absorb", "text": "NAD+ releases steadily for up to 8 hours. Peel off before bed." } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {}
+    },
+    "science": {
+      "type": "image-with-text",
+      "blocks": {
+        "p1": { "type": "point", "settings": { "text": "Bypasses first-pass gut metabolism" } },
+        "p2": { "type": "point", "settings": { "text": "Steady 8-hour release, no spikes" } },
+        "p3": { "type": "point", "settings": { "text": "No pills, powders, or needles" } }
+      },
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {}
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "n1": { "type": "stat", "settings": { "number": "8 hrs", "label": "Steady NAD+ release per patch" } },
+        "n2": { "type": "stat", "settings": { "number": "50%", "label": "Of NAD+ is lost by midlife" } },
+        "n3": { "type": "stat", "settings": { "number": "30 ct", "label": "A full month in every pack" } },
+        "n4": { "type": "stat", "settings": { "number": "4.9★", "label": "Average customer rating" } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4"],
+      "settings": {}
+    },
+    "comparison": {
+      "type": "comparison",
+      "blocks": {
+        "r1": { "type": "row", "settings": { "feature": "Steady all-day release", "us": "yes", "b": "no", "c": "no" } },
+        "r2": { "type": "row", "settings": { "feature": "Bypasses the gut", "us": "yes", "b": "no", "c": "yes" } },
+        "r3": { "type": "row", "settings": { "feature": "No needles", "us": "yes", "b": "yes", "c": "no" } },
+        "r4": { "type": "row", "settings": { "feature": "Use anywhere", "us": "yes", "b": "yes", "c": "no" } },
+        "r5": { "type": "row", "settings": { "feature": "Cost per day", "us": "~$1.60", "b": "~$2.50", "c": "$50+" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5"],
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "rv1": { "type": "review", "settings": { "quote": "Three months in and friends keep asking what changed. My energy and skin both feel years younger.", "name": "Jordan M.", "meta": "NAD+ Patches · 3-month subscriber" } },
+        "rv2": { "type": "review", "settings": { "quote": "I wanted NAD+ benefits without choking down another handful of pills. The patch is effortless.", "name": "Priya S.", "meta": "NAD+ Patches · 6-month subscriber" } },
+        "rv3": { "type": "review", "settings": { "quote": "Steady, all-day energy and I love that it's plant-based. The subscription means I never run out.", "name": "Marcus L.", "meta": "NAD+ Patches · subscriber" } }
+      },
+      "block_order": ["rv1", "rv2", "rv3"],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "f1": { "type": "qa", "settings": { "question": "What exactly is NAD+?", "answer": "<p>NAD+ is a coenzyme in every cell, essential for energy production and cellular repair. Levels decline as we age.</p>" } },
+        "f2": { "type": "qa", "settings": { "question": "How do I use the patches?", "answer": "<p>Apply one patch to clean, dry skin each morning. Wear up to 8 hours, then remove.</p>" } },
+        "f3": { "type": "qa", "settings": { "question": "When will I feel results?", "answer": "<p>Many notice steadier energy within the first week. We recommend a 90-day routine.</p>" } },
+        "f4": { "type": "qa", "settings": { "question": "How does the subscription work?", "answer": "<p>Choose your cadence and save 20%. Skip, swap, or cancel anytime — no fees.</p>" } },
+        "f5": { "type": "qa", "settings": { "question": "What's your return policy?", "answer": "<p>Every order is backed by a 60-day money-back guarantee.</p>" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"],
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "trust-bar",
+    "benefits",
+    "featured",
+    "how-it-works",
+    "science",
+    "stats",
+    "comparison",
+    "testimonials",
+    "faq",
+    "guarantee"
+  ]
+}

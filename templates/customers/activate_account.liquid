@@ -1,0 +1,10 @@
+<section class="section"><div class="page-width" style="max-width:440px">
+  <h1 class="text-center">Activate your account</h1>
+  {%- form 'activate_customer_password', class: 'flow' -%}
+    {{ form.errors | default_errors }}
+    <input type="password" name="customer[password]" placeholder="Password" required style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+    <input type="password" name="customer[password_confirmation]" placeholder="Confirm password" required style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+    <button type="submit" class="btn btn--primary btn--block btn--lg">Activate account</button>
+    <button type="submit" name="decline" class="btn btn--ghost btn--block">Decline invitation</button>
+  {%- endform -%}
+</div></section>

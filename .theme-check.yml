@@ -1,0 +1,9 @@
+# Theme Check configuration for MethodN
+# https://shopify.dev/docs/themes/tools/theme-check
+extends: :default
+
+# We intentionally load Fraunces + Inter from Google Fonts in the <head>.
+# Swap to Shopify's font_picker / self-hosted fonts later if you want to
+# eliminate the third-party request — until then this is a deliberate choice.
+RemoteAsset:
+  enabled: false

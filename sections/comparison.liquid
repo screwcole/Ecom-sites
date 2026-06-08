@@ -1,0 +1,71 @@
+{%- comment -%} Comparison table — MethodN vs pills vs IV {%- endcomment -%}
+<section class="section" style="background:{{ section.settings.bg_color }}">
+  <div class="page-width">
+    <div class="section-head text-center reveal">
+      {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-us">{{ section.settings.col_us }}</th>
+            <th>{{ section.settings.col_b }}</th>
+            <th>{{ section.settings.col_c }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td>{{ block.settings.feature }}</td>
+              <td class="col-us">{% if block.settings.us == 'yes' %}<span class="yes">{% render 'icon', name: 'check', size: 18 %}</span>{% elsif block.settings.us == 'no' %}<span class="no">—</span>{% else %}{{ block.settings.us }}{% endif %}</td>
+              <td>{% if block.settings.b == 'yes' %}<span class="yes">{% render 'icon', name: 'check', size: 18 %}</span>{% elsif block.settings.b == 'no' %}<span class="no">—</span>{% else %}{{ block.settings.b }}{% endif %}</td>
+              <td>{% if block.settings.c == 'yes' %}<span class="yes">{% render 'icon', name: 'check', size: 18 %}</span>{% elsif block.settings.c == 'no' %}<span class="no">—</span>{% else %}{{ block.settings.c }}{% endif %}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison table",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The difference" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why patches win" },
+    { "type": "text", "id": "col_us", "label": "Our column", "default": "MethodN patch" },
+    { "type": "text", "id": "col_b", "label": "Column B", "default": "NAD+ pills" },
+    { "type": "text", "id": "col_c", "label": "Column C", "default": "IV therapy" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F6F3EC" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "feature", "label": "Feature", "default": "No needles" },
+        { "type": "text", "id": "us", "label": "Our value (yes / no / text)", "default": "yes" },
+        { "type": "text", "id": "b", "label": "Column B value", "default": "yes" },
+        { "type": "text", "id": "c", "label": "Column C value", "default": "no" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Comparison table",
+      "blocks": [
+        { "type": "row", "settings": { "feature": "Steady all-day release", "us": "yes", "b": "no", "c": "no" } },
+        { "type": "row", "settings": { "feature": "Bypasses the gut", "us": "yes", "b": "no", "c": "yes" } },
+        { "type": "row", "settings": { "feature": "No needles", "us": "yes", "b": "yes", "c": "no" } },
+        { "type": "row", "settings": { "feature": "Use anywhere", "us": "yes", "b": "yes", "c": "no" } },
+        { "type": "row", "settings": { "feature": "Cost per day", "us": "~$1.60", "b": "~$2.50", "c": "$50+" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+{%- comment -%} Benefit grid — icon + headline + copy {%- endcomment -%}
+<section class="section" style="background:{{ section.settings.bg_color }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head text-center reveal">
+        {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.subheading != blank %}<p class="lede" style="margin-inline:auto">{{ section.settings.subheading }}</p>{% endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <div class="benefit reveal" {{ block.shopify_attributes }}>
+          <div class="benefit__icon">{% render 'icon', name: block.settings.icon %}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p class="text-soft">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits grid",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why MethodN" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "One patch. Whole-body benefits." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "NAD+ is the coenzyme your cells use to make energy. Levels fall as you age — MethodN helps top them back up." },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 4 },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F6F3EC" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "bolt", "label": "Bolt (energy)" },
+          { "value": "brain", "label": "Brain (focus)" },
+          { "value": "heart", "label": "Heart (recovery)" },
+          { "value": "moon", "label": "Moon (sleep)" },
+          { "value": "leaf", "label": "Leaf (longevity)" },
+          { "value": "shield", "label": "Shield" },
+          { "value": "flask", "label": "Flask" }
+        ], "default": "bolt" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Sustained energy" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Fuel your mitochondria for steady, all-day energy without the caffeine crash." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Benefits grid",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "bolt", "title": "Sustained energy", "text": "Fuel your mitochondria for steady, all-day energy — no caffeine crash." } },
+        { "type": "benefit", "settings": { "icon": "brain", "title": "Sharper focus", "text": "Support mental clarity and cognitive performance when it matters most." } },
+        { "type": "benefit", "settings": { "icon": "heart", "title": "Faster recovery", "text": "Aid cellular repair after training, travel, or a long week." } },
+        { "type": "benefit", "settings": { "icon": "leaf", "title": "Healthy aging", "text": "Replenish the NAD+ your body naturally loses with age." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

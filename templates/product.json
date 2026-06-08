@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "trust1": { "type": "trust", "settings": { "icon": "truck", "text": "Free carbon-neutral shipping over $75" } },
+        "trust2": { "type": "trust", "settings": { "icon": "refresh", "text": "60-day money-back guarantee" } },
+        "trust3": { "type": "trust", "settings": { "icon": "flask", "text": "Third-party lab tested · made in a GMP facility" } },
+        "row1": { "type": "collapsible", "settings": { "heading": "How to use", "content": "<p>Apply one patch to clean, dry skin each morning — inner forearm, shoulder, or hip. Wear for up to 8 hours, then remove. Use daily for best results.</p>" } },
+        "row2": { "type": "collapsible", "settings": { "heading": "Ingredients & supplement facts", "content": "<p>Pharmaceutical-grade NAD+ with supporting cofactors. Vegan, non-GMO, gluten-free. Full supplement facts printed on each pack.</p>" } },
+        "row3": { "type": "collapsible", "settings": { "heading": "Shipping & returns", "content": "<p>Orders ship within 1–2 business days. Free shipping over $75. Not feeling it? Return within 60 days for a full refund.</p>" } }
+      },
+      "block_order": ["trust1", "trust2", "trust3", "row1", "row2", "row3"],
+      "settings": { "subscribe_default": true }
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "You may also like",
+        "heading": "Complete your routine",
+        "subheading": "",
+        "limit": 4,
+        "columns": 4
+      }
+    }
+  },
+  "order": ["main", "related"]
+}

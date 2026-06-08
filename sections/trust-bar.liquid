@@ -1,0 +1,50 @@
+{%- comment -%} Trust strip — credibility icons row {%- endcomment -%}
+<div class="trust-bar">
+  <div class="page-width">
+    <div class="trust-bar__inner">
+      {%- for block in section.blocks -%}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon %}
+          <span>{{ block.settings.text }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "shield", "label": "Shield" },
+          { "value": "leaf", "label": "Leaf" },
+          { "value": "flask", "label": "Flask" },
+          { "value": "truck", "label": "Truck" },
+          { "value": "refresh", "label": "Refresh" },
+          { "value": "check", "label": "Check" },
+          { "value": "bolt", "label": "Bolt" }
+        ], "default": "check" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Third-party tested" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "flask", "text": "Pharmaceutical-grade NAD+" } },
+        { "type": "item", "settings": { "icon": "shield", "text": "Third-party lab tested" } },
+        { "type": "item", "settings": { "icon": "leaf", "text": "Vegan · Non-GMO" } },
+        { "type": "item", "settings": { "icon": "truck", "text": "Free shipping over $75" } },
+        { "type": "item", "settings": { "icon": "refresh", "text": "60-day money-back" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

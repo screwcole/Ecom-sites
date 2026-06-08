@@ -1,0 +1,75 @@
+{%- comment -%} Testimonials / social proof grid {%- endcomment -%}
+<section class="section" style="background:{{ section.settings.bg_color }}">
+  <div class="page-width">
+    <div class="section-head text-center reveal">
+      {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.rating_summary != blank -%}
+        <div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:8px">
+          <span class="stars">{% for i in (1..5) %}{% render 'icon', name: 'star', size: 18 %}{% endfor %}</span>
+          <span class="text-soft">{{ section.settings.rating_summary }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <figure class="testimonial reveal" {{ block.shopify_attributes }}>
+          <span class="stars">{% for i in (1..5) %}{% render 'icon', name: 'star', size: 16 %}{% endfor %}</span>
+          <blockquote class="testimonial__quote" style="margin:12px 0 18px">"{{ block.settings.quote }}"</blockquote>
+          <figcaption class="testimonial__author">
+            {%- if block.settings.avatar != blank -%}
+              <img class="testimonial__avatar" src="{{ block.settings.avatar | image_url: width: 84 }}" alt="{{ block.settings.name }}" width="42" height="42" loading="lazy">
+            {%- else -%}
+              {%- assign avatar_idx = forloop.index0 | modulo: 3 | plus: 1 -%}
+              {%- assign avatar_file = 'reviewer-' | append: avatar_idx | append: '.jpg' -%}
+              <img class="testimonial__avatar" src="{{ avatar_file | asset_url }}" alt="{{ block.settings.name }}" width="42" height="42" loading="lazy">
+            {%- endif -%}
+            <span>
+              <span class="testimonial__name">{{ block.settings.name }}</span>
+              {%- if block.settings.verified %} <span class="badge badge--soft" style="font-size:0.65rem">Verified</span>{% endif -%}
+              <span class="testimonial__meta" style="display:block">{{ block.settings.meta }}</span>
+            </span>
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Loved by thousands" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real people. Real energy." },
+    { "type": "text", "id": "rating_summary", "label": "Rating summary", "default": "4.9 average from 3,100+ reviews" },
+    { "type": "range", "id": "columns", "min": 2, "max": 3, "step": 1, "label": "Columns", "default": 3 },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#EFEADF" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "By 3pm I used to crash hard. Two weeks on MethodN and that afternoon wall is just… gone." },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Jordan M." },
+        { "type": "text", "id": "meta", "label": "Meta", "default": "Energy patch · 3-month subscriber" },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "By 3pm I used to crash hard. Two weeks on MethodN and that afternoon wall is just… gone.", "name": "Jordan M.", "meta": "Energy patch · 3-month subscriber" } },
+        { "type": "review", "settings": { "quote": "I travel constantly and jet lag wrecked me. These are now the first thing in my carry-on.", "name": "Priya S.", "meta": "Recovery patch · verified buyer" } },
+        { "type": "review", "settings": { "quote": "No jitters, no crash, just a clear steady focus through deep-work blocks. Hooked.", "name": "Marcus L.", "meta": "Focus patch · 6-month subscriber" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

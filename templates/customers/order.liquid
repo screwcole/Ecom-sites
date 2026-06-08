@@ -1,0 +1,14 @@
+<section class="section"><div class="page-width" style="max-width:820px">
+  <h1>Order {{ order.name }}</h1>
+  <p class="text-soft">Placed {{ order.created_at | date: '%B %-d, %Y' }}</p>
+  <table class="compare" style="text-align:left;margin-top:20px">
+    <thead><tr><th>Product</th><th>Qty</th><th>Price</th></tr></thead>
+    <tbody>
+      {%- for line in order.line_items -%}
+        <tr><td>{{ line.title }}</td><td>{{ line.quantity }}</td><td>{{ line.final_line_price | money }}</td></tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+  <div class="cart-totals" style="justify-content:flex-end;gap:24px;margin-top:20px"><span>Total</span><span>{{ order.total_net_amount | money }}</span></div>
+  <p style="margin-top:20px"><a href="{{ routes.account_url }}" class="link-arrow">← Back to account</a></p>
+</div></section>

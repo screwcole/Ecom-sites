@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MethodN — NAD+ Patches (Design Preview)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/base.css">
+  <style>
+    :root{
+      --color-bg:#F6F3EC; --color-surface:#FFFFFF; --color-text:#18181B; --color-text-soft:#56564f;
+      --color-primary:#1B3A2F; --color-primary-text:#F6F3EC; --color-accent:#D6FF6B; --color-accent-text:#18181B;
+      --color-border:rgba(24,24,27,0.12); --radius:12px; --radius-lg:24px; --page-width:1280px;
+      --font-heading:'Fraunces',Georgia,serif; --font-body:'Inter',-apple-system,sans-serif;
+    }
+    /* Branded image placeholders (no photos yet) */
+    .ph{background:linear-gradient(135deg,#2b5346,#1B3A2F 60%,#14201a);position:relative}
+    .ph--light{background:linear-gradient(135deg,#EFEADF,#E3DCCb)}
+    .ph--accent{background:linear-gradient(135deg,#1B3A2F,#2b5346 70%);}
+    .ph-patch{position:absolute;inset:0;display:grid;place-items:center}
+    .ph-patch span{width:46%;aspect-ratio:1;border-radius:999px;border:2px dashed rgba(255,255,255,.35);display:grid;place-items:center;color:rgba(255,255,255,.85);font-family:var(--font-heading);font-size:1.1rem;text-align:center;letter-spacing:.02em}
+    .preview-banner{background:#18181B;color:#fff;font-size:.8rem;text-align:center;padding:7px 12px;font-family:var(--font-body)}
+    .preview-banner b{color:var(--color-accent)}
+    .logo-slash{color:#1aa34b}
+    .supply-feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+    .supply-feature img{width:100%;border-radius:var(--radius-lg)}
+    @media(max-width:820px){.supply-feature{grid-template-columns:1fr}}
+    .tier-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:inherit;cursor:pointer;padding:14px 16px;border:1.5px solid var(--color-border);border-radius:var(--radius);margin-bottom:10px;background:var(--color-surface);transition:border-color .15s ease,box-shadow .15s ease,transform .1s ease}
+    .tier-row:hover{border-color:var(--color-primary);box-shadow:0 10px 26px -16px var(--color-primary)}
+    .tier-row:active{transform:translateY(1px)}
+    .tier-row__label{flex:1}
+    .tier-row strong{font-weight:600}
+    .tier-row .save-badge{margin-left:6px}
+    .tier-row__price{font-weight:600;white-space:nowrap}
+    .tier-row__btn{font-size:.78rem;font-weight:700;padding:.5em .9em;border-radius:999px;border:1.5px solid var(--color-border);color:var(--color-primary);white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+    .tier-row:hover .tier-row__btn{background:var(--color-primary);color:var(--color-primary-text);border-color:var(--color-primary)}
+    @media(max-width:560px){.tier-row{flex-wrap:wrap}.tier-row__label{flex:1 1 60%}}
+    .product-card__media.ph{aspect-ratio:1;border-radius:var(--radius-lg)}
+    .hero__media.ph,.split__media.ph{aspect-ratio:4/5;border-radius:var(--radius-lg);min-height:420px}
+    .goal-card.ph::after{display:none}
+    .testimonial__avatar.ph{background:linear-gradient(135deg,#2b5346,#1B3A2F)}
+  </style>
+</head>
+<body class="template-index">
+
+<div class="preview-banner">DESIGN PREVIEW — static render of the MethodN theme. <b>Cart &amp; checkout are Shopify-backed and inactive here.</b> Connect a store with Shopify CLI for the full experience.</div>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">Subscribe &amp; save 20% · Free shipping over $75 · 60-day money-back guarantee</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="page-width header__inner">
+    <button class="header__menu-toggle" data-nav-open aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a href="/preview/index.html" class="header__logo">Method<span class="logo-slash">/N</span></a>
+    <nav class="header__nav" aria-label="Primary">
+      <a href="/preview/shop.html">Shop</a><a href="#how">How it works</a><a href="#science">The Science</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="header__actions">
+      <a href="/preview/product.html" class="header__cta">Shop</a>
+      <a href="/preview/shop.html" class="header__icon" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a>
+      <a href="#" class="header__icon" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <button class="header__icon" data-cart-open aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-2 5h12"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" style="background:#EFEADF">
+  <div class="page-width"><div class="hero__inner">
+    <div class="hero__content reveal">
+      <span class="eyebrow">Transdermal NAD+ technology</span>
+      <div class="hero__rating">
+        <span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-star"/></svg></span>
+        <span>4.9 · 12,000+ patches worn</span>
+      </div>
+      <h1>Age defense, in a daily patch.</h1>
+      <p class="lede">Method/N delivers <strong>NMN &amp; Resveratrol</strong> through your skin to support your body's NAD+ production — cellular renewal without pills or needles.</p>
+      <div class="hero__ctas">
+        <a href="/preview/product.html" class="btn btn--primary btn--lg">Shop NAD+ Patches — from $39/mo</a>
+        <a href="#how" class="btn btn--outline btn--lg">How it works</a>
+      </div>
+      <div class="hero__badges">
+        <span class="badge badge--soft"><svg viewBox="0 0 24 24" width="16"><use href="#i-shield"/></svg> Third-party tested</span>
+        <span class="badge badge--soft"><svg viewBox="0 0 24 24" width="16"><use href="#i-leaf"/></svg> Plant-based &amp; non-GMO</span>
+        <span class="badge badge--soft"><svg viewBox="0 0 24 24" width="16"><use href="#i-flask"/></svg> NMN &amp; Resveratrol</span>
+      </div>
+    </div>
+    <div class="hero__media reveal"><img src="/assets/methodn1box.jpeg" alt="Method/N NAD+ Patches box" width="832" height="832" style="border-radius:var(--radius-lg);aspect-ratio:4/5;object-fit:cover;width:100%"></div>
+  </div></div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar"><div class="page-width"><div class="trust-bar__inner">
+  <div class="trust-item"><svg viewBox="0 0 24 24"><use href="#i-flask"/></svg><span>Pharmaceutical-grade NAD+</span></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg><span>Third-party lab tested</span></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><use href="#i-leaf"/></svg><span>Vegan · Non-GMO</span></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg><span>Free shipping over $75</span></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><use href="#i-refresh"/></svg><span>60-day money-back</span></div>
+</div></div></div>
+
+<!-- BENEFITS -->
+<section class="section" style="background:#F6F3EC"><div class="page-width">
+  <div class="section-head text-center reveal">
+    <span class="eyebrow">Why Method/N</span>
+    <h2>One patch. Cellular renewal.</h2>
+    <p class="lede" style="margin-inline:auto">NAD+ is the coenzyme your cells use to make energy and repair themselves. Levels fall as you age — Method/N helps top them back up.</p>
+  </div>
+  <div class="grid grid--4">
+    <div class="benefit reveal"><div class="benefit__icon"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></div><h3>Cellular energy</h3><p class="text-soft">Fuel your mitochondria with the NAD+ your cells need to produce energy.</p></div>
+    <div class="benefit reveal"><div class="benefit__icon"><svg viewBox="0 0 24 24"><use href="#i-leaf"/></svg></div><h3>Age defense</h3><p class="text-soft">NMN supports NAD+ production tied to healthy aging and cellular repair.</p></div>
+    <div class="benefit reveal"><div class="benefit__icon"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></div><h3>Antioxidant support</h3><p class="text-soft">Resveratrol helps defend cells against everyday oxidative stress.</p></div>
+    <div class="benefit reveal"><div class="benefit__icon"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></div><h3>Whole-body renewal</h3><p class="text-soft">Steady transdermal delivery supports vitality from the inside out.</p></div>
+  </div>
+</div></section>
+
+<!-- CHOOSE YOUR SUPPLY (single product) -->
+<section class="section" id="shop" style="background:#F6F3EC"><div class="page-width">
+  <div class="supply-feature reveal">
+    <div><img src="/assets/methodn3box.jpeg" alt="Method/N NAD+ Patches — 1, 2 and 3-month supplies" width="964" height="964"></div>
+    <div>
+      <span class="eyebrow">One product. Choose your supply.</span>
+      <h2>NAD+ Patches</h2>
+      <div class="product__rating" style="margin:8px 0 14px"><span class="stars"><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg></span> <span class="text-soft">4.9 · 1,200+ reviews</span></div>
+      <p class="text-soft" style="margin-bottom:20px">Age defense &amp; cellular renewal with NMN &amp; Resveratrol. The longer your supply, the lower your price per month — and subscribers save another 20%.</p>
+      <button type="button" class="tier-row" data-tier data-months="1" data-base="4900"><span class="tier-row__label"><strong>1-month</strong> · 30 patches</span><span class="tier-row__price">$49.00 <span class="text-soft" style="font-weight:400">/mo</span></span><span class="tier-row__btn">Add to cart</span></button>
+      <button type="button" class="tier-row" data-tier data-months="2" data-base="9400"><span class="tier-row__label"><strong>2-month</strong> · 60 patches <span class="save-badge">Save 4%</span></span><span class="tier-row__price">$47.00 <span class="text-soft" style="font-weight:400">/mo</span></span><span class="tier-row__btn">Add to cart</span></button>
+      <button type="button" class="tier-row" data-tier data-months="3" data-base="13500"><span class="tier-row__label"><strong>3-month</strong> · 90 patches <span class="save-badge">Save 8%</span></span><span class="tier-row__price">$45.00 <span class="text-soft" style="font-weight:400">/mo</span></span><span class="tier-row__btn">Add to cart</span></button>
+      <button type="button" class="tier-row" data-tier data-months="6" data-base="23400"><span class="tier-row__label"><strong>6-month</strong> · 180 patches <span class="save-badge">Best value · 20%</span></span><span class="tier-row__price">$39.00 <span class="text-soft" style="font-weight:400">/mo</span></span><span class="tier-row__btn">Add to cart</span></button>
+      <p class="text-soft" style="font-size:.82rem;margin-top:6px">↻ Prices shown per month. Subscribe &amp; Save applied — cancel anytime.</p>
+      <div style="margin-top:18px"><a href="/preview/product.html" class="btn btn--outline btn--lg">See full details</a></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section class="section invert" id="how" style="background:#1B3A2F"><div class="page-width">
+  <div class="section-head text-center reveal"><span class="eyebrow">Effortless ritual</span><h2>Three steps to better days</h2><p class="lede" style="margin-inline:auto">Wear it and forget it. Each patch delivers a slow, steady release for up to 8 hours.</p></div>
+  <div class="grid grid--3 steps">
+    <div class="step reveal"><span class="step__num">1</span><h3>Peel</h3><p class="text-soft">Remove one patch from the pack each morning.</p></div>
+    <div class="step reveal"><span class="step__num">2</span><h3>Stick</h3><p class="text-soft">Apply to clean, dry skin — inner forearm, shoulder, or hip.</p></div>
+    <div class="step reveal"><span class="step__num">3</span><h3>Absorb</h3><p class="text-soft">NAD+ releases steadily for up to 8 hours. Peel off before bed.</p></div>
+  </div>
+  <div class="text-center" style="margin-top:40px"><a href="/preview/shop.html" class="btn btn--primary btn--lg">Start your routine</a></div>
+</div></section>
+
+<!-- SCIENCE SPLIT -->
+<section class="section" id="science" style="background:#F6F3EC"><div class="page-width">
+  <div class="split reveal">
+    <div class="split__media"><img src="/assets/methodnugcproductimage.jpeg" alt="Customer holding Method/N NAD+ Patches" width="697" height="697" style="border-radius:var(--radius-lg)"></div>
+    <div class="split__content">
+      <span class="eyebrow">The science</span>
+      <h2>Why transdermal beats a pill</h2>
+      <div class="flow text-soft"><p>Swallowed NMN is largely broken down in the gut before it reaches your cells. Method/N's transdermal delivery bypasses digestion, releasing <strong>NMN &amp; Resveratrol</strong> steadily through the skin for higher, more consistent absorption — supporting your body's NAD+ production all day.</p></div>
+      <ul class="product__trust" style="margin-top:24px;border:0;padding:0">
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> Bypasses first-pass gut metabolism</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> Steady release, no spikes or crashes</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg> No pills, powders, or needles</li>
+      </ul>
+      <div style="margin-top:28px"><a href="/preview/product.html" class="btn btn--primary">Shop NAD+ Patches</a></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- STATS -->
+<section class="section" style="background:#EFEADF"><div class="page-width">
+  <div class="section-head text-center reveal"><h2>Backed by the science of NAD+</h2></div>
+  <div class="grid grid--4">
+    <div class="stat reveal"><div class="stat__num">8 hrs</div><div class="stat__label">Steady NAD+ release per patch</div></div>
+    <div class="stat reveal"><div class="stat__num">50%</div><div class="stat__label">Of NAD+ is lost by midlife</div></div>
+    <div class="stat reveal"><div class="stat__num">30 ct</div><div class="stat__label">A full month in every pack</div></div>
+    <div class="stat reveal"><div class="stat__num">4.9★</div><div class="stat__label">Average customer rating</div></div>
+  </div>
+</div></section>
+
+<!-- COMPARISON -->
+<section class="section" style="background:#F6F3EC"><div class="page-width">
+  <div class="section-head text-center reveal"><span class="eyebrow">The difference</span><h2>Why patches win</h2></div>
+  <div class="reveal" style="overflow-x:auto"><table class="compare">
+    <thead><tr><th></th><th class="col-us">Method/N patch</th><th>NAD+ pills</th><th>IV therapy</th></tr></thead>
+    <tbody>
+      <tr><td>Steady all-day release</td><td class="col-us"><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+      <tr><td>Bypasses the gut</td><td class="col-us"><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td><td><span class="no">—</span></td><td><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td></tr>
+      <tr><td>No needles</td><td class="col-us"><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td><td><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td><td><span class="no">—</span></td></tr>
+      <tr><td>Use anywhere</td><td class="col-us"><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td><td><span class="yes"><svg viewBox="0 0 24 24" width="18"><use href="#i-check"/></svg></span></td><td><span class="no">—</span></td></tr>
+      <tr><td>Cost per day</td><td class="col-us">~$1.60</td><td>~$2.50</td><td>$50+</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background:#EFEADF"><div class="page-width">
+  <div class="section-head text-center reveal"><span class="eyebrow">Loved by thousands</span><h2>Real people. Real renewal.</h2>
+    <div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:8px"><span class="stars"><svg viewBox="0 0 24 24" width="18"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="18"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="18"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="18"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="18"><use href="#i-star"/></svg></span><span class="text-soft">4.9 average from 3,100+ reviews</span></div>
+  </div>
+  <div class="grid grid--3">
+    <figure class="testimonial reveal"><span class="stars"><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg></span><blockquote class="testimonial__quote" style="margin:12px 0 18px">"Three months in and friends keep asking what changed. My energy and skin both feel years younger."</blockquote><figcaption class="testimonial__author"><img class="testimonial__avatar" src="/assets/reviewer-1.jpg" alt="Jordan M." width="42" height="42"><span><span class="testimonial__name">Jordan M.</span> <span class="badge badge--soft" style="font-size:.65rem">Verified</span><span class="testimonial__meta" style="display:block">NAD+ Patches · 3-month subscriber</span></span></figcaption></figure>
+    <figure class="testimonial reveal"><span class="stars"><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg></span><blockquote class="testimonial__quote" style="margin:12px 0 18px">"I wanted NAD+ benefits without choking down another handful of pills. The patch is effortless."</blockquote><figcaption class="testimonial__author"><img class="testimonial__avatar" src="/assets/reviewer-2.jpg" alt="Priya S." width="42" height="42"><span><span class="testimonial__name">Priya S.</span> <span class="badge badge--soft" style="font-size:.65rem">Verified</span><span class="testimonial__meta" style="display:block">NAD+ Patches · 6-month subscriber</span></span></figcaption></figure>
+    <figure class="testimonial reveal"><span class="stars"><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" width="16"><use href="#i-star"/></svg></span><blockquote class="testimonial__quote" style="margin:12px 0 18px">"Steady, all-day energy and I love that it's plant-based. The subscription means I never run out."</blockquote><figcaption class="testimonial__author"><img class="testimonial__avatar" src="/assets/reviewer-3.jpg" alt="Marcus L." width="42" height="42"><span><span class="testimonial__name">Marcus L.</span> <span class="badge badge--soft" style="font-size:.65rem">Verified</span><span class="testimonial__meta" style="display:block">NAD+ Patches · subscriber</span></span></figcaption></figure>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:#F6F3EC"><div class="page-width" style="max-width:820px">
+  <div class="section-head text-center reveal"><span class="eyebrow">Questions</span><h2>Everything you want to know</h2></div>
+  <div class="reveal">
+    <details class="faq__item" open><summary class="faq__q">What's in Method/N NAD+ Patches?<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Each patch delivers <strong>NMN &amp; Resveratrol</strong> — the most-studied longevity pairing — to support your body's natural NAD+ production. Plant-based, non-GMO, and third-party tested.</div></details>
+    <details class="faq__item"><summary class="faq__q">How do I use the patches?<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Apply one patch to clean, dry skin each morning. Wear up to 8 hours, then remove.</div></details>
+    <details class="faq__item"><summary class="faq__q">When will I feel results?<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Many notice steadier energy within the first week. We recommend a 90-day routine.</div></details>
+    <details class="faq__item"><summary class="faq__q">How does the subscription work?<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Choose your cadence and save 20%. Skip, swap, or cancel anytime — no fees.</div></details>
+    <details class="faq__item"><summary class="faq__q">What's your return policy?<span class="faq__icon"><svg viewBox="0 0 24 24" width="22"><use href="#i-plus"/></svg></span></summary><div class="faq__a">Every order is backed by a 60-day money-back guarantee.</div></details>
+  </div>
+</div></section>
+
+<!-- GUARANTEE -->
+<section class="section"><div class="page-width"><div class="guarantee reveal">
+  <div class="benefit__icon" style="margin-inline:auto;background:rgba(255,255,255,0.12);color:var(--color-accent)"><svg viewBox="0 0 24 24" width="28"><use href="#i-shield"/></svg></div>
+  <h2>Try it risk-free for 60 days</h2>
+  <p class="lede" style="margin-inline:auto;max-width:52ch">Wear Method/N every day for two months. If you don't feel the difference, send it back for a full refund — even empty packs.</p>
+  <div style="margin-top:28px"><a href="/preview/product.html" class="btn btn--accent btn--lg">Start your routine</a></div>
+</div></div></section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="page-width">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a href="/preview/index.html" class="header__logo" style="display:inline-block;margin-bottom:14px">Method<span class="logo-slash">/N</span></a>
+      <p>Age defense &amp; cellular renewal. NAD+ patches powered by NMN &amp; Resveratrol.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18"><use href="#i-ig"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" width="18"><use href="#i-tt"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Shop</h4><ul><li><a href="/preview/product.html">NAD+ Patches</a></li><li><a href="/preview/product.html">Subscribe &amp; save</a></li><li><a href="#how">How it works</a></li><li><a href="#science">The science</a></li></ul></div>
+    <div><h4>Support</h4><ul><li><a href="/preview/about.html">About</a></li><li><a href="/preview/faq.html">FAQ</a></li><li><a href="/preview/faq.html#shipping">Shipping &amp; Returns</a></li><li><a href="/preview/product.html">Subscriptions</a></li><li><a href="mailto:hello@methodn.com">Contact</a></li></ul></div>
+    <div><h4>Stay in the loop</h4><p class="text-soft" style="margin-bottom:14px">Longevity science, product drops, and subscriber-only offers.</p>
+      <div class="newsletter__form"><input type="email" placeholder="Email address" aria-label="Email"><button class="btn btn--primary">Join</button></div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Method/N. These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</span>
+    <div class="pill-row"><a href="/preview/policies.html#privacy">Privacy</a><a href="/preview/policies.html#terms">Terms</a><a href="/preview/policies.html#refunds">Refunds</a></div>
+  </div>
+</div></footer>
+
+<script src="/preview/preview-shop.js"></script>
+</body>
+</html>

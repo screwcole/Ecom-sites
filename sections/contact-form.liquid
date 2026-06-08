@@ -1,0 +1,29 @@
+{%- comment -%} Contact form section {%- endcomment -%}
+<section class="section">
+  <div class="page-width" style="max-width:620px">
+    <div class="text-center reveal" style="margin-bottom:32px">
+      <h1>{{ section.settings.heading | default: page.title }}</h1>
+      {%- if section.settings.text != blank %}<p class="lede" style="margin-inline:auto">{{ section.settings.text }}</p>{% endif -%}
+    </div>
+    {%- form 'contact', class: 'flow reveal' -%}
+      {{ form.errors | default_errors }}
+      {%- if form.posted_successfully? -%}
+        <div class="card" style="text-align:center">Thanks — we'll be in touch within 1 business day.</div>
+      {%- endif -%}
+      <input type="text" name="contact[name]" placeholder="Name" required style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+      <input type="email" name="contact[email]" placeholder="Email" required style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+      <textarea name="contact[body]" placeholder="How can we help?" rows="5" required style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%;font-family:inherit"></textarea>
+      <button type="submit" class="btn btn--primary btn--lg">Send message</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get in touch" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Questions about NAD+, your order, or your subscription? Our team replies within one business day." }
+  ]
+}
+{% endschema %}

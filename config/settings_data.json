@@ -1,0 +1,37 @@
+{
+  "current": {
+    "color_background": "#F6F3EC",
+    "color_surface": "#FFFFFF",
+    "color_text": "#18181B",
+    "color_primary": "#1B3A2F",
+    "color_primary_text": "#F6F3EC",
+    "color_accent": "#D6FF6B",
+    "color_accent_text": "#18181B",
+    "page_width": 1280,
+    "corner_radius": 12,
+    "cart_type": "drawer",
+    "cart_show_free_shipping_bar": true,
+    "cart_free_shipping_threshold": 75,
+    "logo_width": 140
+  },
+  "presets": {
+    "MethodN — Default": {
+      "color_background": "#F6F3EC",
+      "color_surface": "#FFFFFF",
+      "color_text": "#18181B",
+      "color_primary": "#1B3A2F",
+      "color_primary_text": "#F6F3EC",
+      "color_accent": "#D6FF6B",
+      "color_accent_text": "#18181B"
+    },
+    "MethodN — Midnight": {
+      "color_background": "#0E1512",
+      "color_surface": "#16201B",
+      "color_text": "#EAF1EC",
+      "color_primary": "#D6FF6B",
+      "color_primary_text": "#0E1512",
+      "color_accent": "#7BE0B5",
+      "color_accent_text": "#0E1512"
+    }
+  }
+}

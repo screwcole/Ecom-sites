@@ -1,0 +1,26 @@
+<section class="section"><div class="page-width" style="max-width:820px">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <h1>Hi, {{ customer.first_name | default: 'there' }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="btn btn--outline">Sign out</a>
+  </div>
+  <p class="text-soft"><a href="{{ routes.account_addresses_url }}">Manage addresses</a></p>
+
+  <h3 style="margin-top:32px">Order history</h3>
+  {%- if customer.orders.size > 0 -%}
+    <table class="compare" style="text-align:left">
+      <thead><tr><th>Order</th><th>Date</th><th>Status</th><th>Total</th></tr></thead>
+      <tbody>
+        {%- for order in customer.orders -%}
+          <tr>
+            <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+            <td>{{ order.created_at | date: '%b %-d, %Y' }}</td>
+            <td>{{ order.fulfillment_status_label }}</td>
+            <td>{{ order.total_net_amount | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  {%- else -%}
+    <p class="text-soft">You haven't placed any orders yet.</p>
+  {%- endif -%}
+</div></section>

@@ -1,0 +1,64 @@
+{%- comment -%} Collection page — header, sort, product grid, pagination {%- endcomment -%}
+<div class="page-width">
+  <div class="collection-header reveal">
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <p class="lede" style="margin-inline:auto">{{ collection.description }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="collection-toolbar">
+      <span class="text-soft">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</span>
+      {%- if section.settings.show_sorting -%}
+        <form method="get" id="SortForm">
+          <select name="sort_by" onchange="this.form.submit()" aria-label="Sort">
+            {%- assign sort = collection.sort_by | default: collection.default_sort_by -%}
+            <option value="manual" {% if sort == 'manual' %}selected{% endif %}>Featured</option>
+            <option value="best-selling" {% if sort == 'best-selling' %}selected{% endif %}>Best selling</option>
+            <option value="price-ascending" {% if sort == 'price-ascending' %}selected{% endif %}>Price: low to high</option>
+            <option value="price-descending" {% if sort == 'price-descending' %}selected{% endif %}>Price: high to low</option>
+            <option value="created-descending" {% if sort == 'created-descending' %}selected{% endif %}>Newest</option>
+          </select>
+        </form>
+      {%- endif -%}
+    </div>
+
+    {%- paginate collection.products by section.settings.per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="grid grid--{{ section.settings.columns }}">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination pill-row" style="justify-content:center;margin-top:48px" aria-label="Pagination">
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a class="btn btn--outline" href="{{ part.url }}">{{ part.title }}</a>
+              {%- else -%}
+                <span class="btn btn--primary">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <p class="text-center text-soft" style="padding:64px 0">No products found.</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 4 },
+    { "type": "range", "id": "per_page", "min": 8, "max": 36, "step": 4, "label": "Products per page", "default": 12 },
+    { "type": "checkbox", "id": "show_sorting", "label": "Show sorting", "default": true }
+  ]
+}
+{% endschema %}

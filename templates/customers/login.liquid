@@ -1,0 +1,20 @@
+<section class="section"><div class="page-width" style="max-width:440px">
+  <h1 class="text-center">Sign in</h1>
+  {%- form 'customer_login', class: 'flow' -%}
+    {{ form.errors | default_errors }}
+    <input type="email" name="customer[email]" placeholder="Email" required class="btn--block" style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+    <input type="password" name="customer[password]" placeholder="Password" class="btn--block" style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+    <button type="submit" class="btn btn--primary btn--block btn--lg">Sign in</button>
+    <p class="text-center text-soft"><a href="#recover" onclick="document.getElementById('recover').hidden=false;return false">Forgot password?</a> · <a href="{{ routes.account_register_url }}">Create account</a></p>
+  {%- endform -%}
+
+  <div id="recover" hidden style="margin-top:24px">
+    {%- form 'recover_customer_password', class: 'flow' -%}
+      <h3>Reset password</h3>
+      {{ form.errors | default_errors }}
+      {%- if form.posted_successfully? -%}<p>We've sent you a reset link.</p>{%- endif -%}
+      <input type="email" name="email" placeholder="Email" required style="padding:.9em 1.1em;border:1.5px solid var(--color-border);border-radius:var(--radius);width:100%">
+      <button type="submit" class="btn btn--outline btn--block">Send reset link</button>
+    {%- endform -%}
+  </div>
+</div></section>

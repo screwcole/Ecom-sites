@@ -1,0 +1,23 @@
+{%- comment -%} Slide-out cart drawer. Hydrated by theme.js via the AJAX Cart API. {%- endcomment -%}
+<div class="cart-drawer" id="CartDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="cart-drawer__overlay" data-cart-close></div>
+  <div class="cart-drawer__panel">
+    <div class="cart-drawer__head">
+      <h2>Your cart</h2>
+      <button class="cart-drawer__close" data-cart-close aria-label="Close cart">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <div class="cart-drawer__body" data-cart-body>
+      <div class="cart-empty"><p>Your cart is empty.</p></div>
+    </div>
+    <div class="cart-drawer__foot" data-cart-foot hidden>
+      <div data-cart-savings></div>
+      <div class="cart-totals">
+        <span>Subtotal</span>
+        <span data-cart-total>$0.00</span>
+      </div>
+      <a href="/checkout" class="btn btn--primary btn--block btn--lg">Secure checkout</a>
+      <div data-cart-upsell></div>
+      <p class="cart-note">Shipping &amp; taxes calculated at checkout · 60-day guarantee</p>
+    </div>
+  </div>
+</div>
